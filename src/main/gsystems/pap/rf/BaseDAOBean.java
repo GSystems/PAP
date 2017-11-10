@@ -10,21 +10,21 @@ import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import main.gsystems.pap.util.GeneralConstants;
 
 /**
  * The base DAO bean that must be extended by all DAOs.
- * @param <T>
- *            the specific entity type
- * @param <K>
- *            the specific entity primary key type
+ * @param <T> the specific entity type
+ * @param <K> the specific entity primary key type
  */
 public abstract class BaseDAOBean<T, K extends Serializable> implements BaseDAO<T, K> {
 
 	private EntityManagerFactory emf;
 
+	@PersistenceContext
 	private EntityManager entityManager;
 
 	public static final Logger LOGGER = Logger.getLogger(BaseDAOBean.class.getName());
