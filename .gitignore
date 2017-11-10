@@ -1,0 +1,7 @@
+/build/
+/target/
+/.settings/
+/.DS_Store
+src/main/gsystems/.DS_Store
+src/main/.DS_Store
+src/.DS_Store

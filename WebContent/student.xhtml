@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel id="studentPanel" header="Student Panel"
+			value="#{studentBean.model.student}" style="margin-bottom:10px;">
+			<h:panelGrid columns="1" cellpadding="5">
+				<h:outputLabel for="operationSelector"
+					value="Please select the operation *" />
+				<p:selectOneMenu id="operationSelector"
+					value="#{studentBean.model.operation}" required="true">
+					<f:selectItem itemLabel="Select" itemValue="" />
+					<f:selectItem itemLabel="Add" itemValue="add" />
+					<f:selectItem itemLabel="Edit" itemValue="edit" />
+					<p:ajax event="change"
+						update="submitStudentBtn studentSelectorPanel"
+						listener="#{studentBean.detectOperation}" />
+				</p:selectOneMenu>
+
+				<p:panelGrid columns="2" id="studentSelectorPanel"
+					rendered="#{studentBean.model.updateOperation}">
+					<h:outputLabel for="studentSelector"
+						value="Select the student that you want to edit *" />
+					<p:selectOneMenu id="studentSelector"
+						value="#{studentBean.model.student}" required="true">
+						<f:selectItem itemLabel="Select" itemValue="" />
+						<f:selectItems value="#{studentBean.model.allStudents}" var="student"
+							itemLabel="#{student.firstname} #{student.lastname}"
+							itemValue="#{student}" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+
+				<p:outputLabel for="firstname" value="First Name: " />
+				<p:inputText id="firstname" required="true"
+					value="#{studentBean.model.student.firstname}" />
+
+				<p:outputLabel for="lastname" value="Last Name: " />
+				<p:inputText id="lastname" required="true"
+					value="#{studentBean.model.student.lastname}" />
+
+				<p:outputLabel for="email" value="Email" />
+				<p:inputText id="email" value="#{studentBean.model.student.email}"
+					validatorMessage="Invalid email format">
+					<p:ajax event="change" update="growl" />
+					<f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+				</p:inputText>
+
+				<p:outputLabel for="skills" value="Skills" />
+				<p:inputText id="skills" value="#{studentBean.model.skills}"
+					required="true" />
+
+				<p:selectCheckboxMenu id="studentPreferences"
+					value="#{studentBean.model.selectedStudentPreferences}"
+					label="Preferences" multiple="true" filter="true"
+					filterMatchMode="startsWith" panelStyle="width:250px">
+					<f:selectItems value="#{studentBean.model.allProjects}" var="project"
+						itemLabel="#{project.name}" itemValue="#{project}" />
+				</p:selectCheckboxMenu>
+
+				<p:tooltip for="email" mouseTracking="true"
+					value="Please enter a valid email address" />
+			</h:panelGrid>
+		</p:panel>
+
+		<p:growl id="growl" life="1500" />
+
+		<p:commandButton id="submitStudentBtn" value="Submit"
+			action="#{studentBean.processOperation}"
+			disabled="#{studentBean.model.submitBtnDisabled}"
+			title="Submit the values" />
+	</h:form>
+</h:body>
+</html>
