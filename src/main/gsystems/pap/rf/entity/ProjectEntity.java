@@ -3,14 +3,18 @@ package main.gsystems.pap.rf.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import main.gsystems.pap.util.GeneralConstants;
 
@@ -25,16 +29,18 @@ public class ProjectEntity {
 	private Integer capacity;
 	private String coordinator;
 
-	@ManyToMany
+	@Fetch(FetchMode.SELECT)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="project_skill",
 		joinColumns = @JoinColumn(name = "id_project", referencedColumnName = "id"),
 		inverseJoinColumns = @JoinColumn(name = "id_skill", referencedColumnName = "id"))
 	private List<SkillEntity> skills;
+	
 
-	@ManyToOne(targetEntity = StudentEntity.class)
+	@OneToMany(fetch = FetchType.EAGER, targetEntity = StudentEntity.class)
 	@JoinTable(name = "project_preferences",
-		joinColumns = @JoinColumn(name="id_project", referencedColumnName = "id"),
-		inverseJoinColumns = @JoinColumn(name = "id_student", referencedColumnName = "id"))
+		joinColumns = @JoinColumn(name="id_student", referencedColumnName = "id"),
+		inverseJoinColumns = @JoinColumn(name = "id_project", referencedColumnName = "id"))
 	private List<StudentEntity> preferences;
 
 	public Integer getId() {

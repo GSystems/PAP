@@ -1,7 +1,6 @@
 package main.gsystems.pap.pf;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -31,11 +30,9 @@ public class StudentBean implements Serializable {
 		model = new AssignmentModel();
 		model.setStudent(new StudentDTO());
 		model.setSubmitBtnDisabled(true);
-		
-		model.setAllProjects(new ArrayList<>());
-		model.setAllStudents(new ArrayList<>());
-		model.generateProjects();
-		model.generateStudents();
+
+		model.setAllProjects(facade.findAllProjects());
+		model.setAllStudents(facade.findAllStudents());
 	}
 
 	public AssignmentModel getModel() {
@@ -101,15 +98,14 @@ public class StudentBean implements Serializable {
 	}
 
 	public void addOperation() {
-		if (model.getProjectSubject()) {
-			facade.insertProject(model.getProject());
-			facade.insertSkill(model.getSkills());
-		} else if (model.getStudentSubject()) {
-			facade.insertStudent(model.getStudent());
+//		 if (model.getProjectSubject()) {
+		 facade.insertProject(model.getProject());
+//		 } else if (model.getStudentSubject()) {
+			 facade.insertStudent(model.getStudent());
 			showMessage("Operation successful", FacesMessage.SEVERITY_INFO);
-		} else {
+//		} else {
 			showMessage(LocalizedEn.UNEXPECTED_ERROR, FacesMessage.SEVERITY_ERROR);
-		}
+//		}
 	}
 
 	public void updateOperation() {

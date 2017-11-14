@@ -31,7 +31,8 @@
 					<h:outputLabel for="studentSelector"
 						value="Select the student that you want to edit *" />
 					<p:selectOneMenu id="studentSelector"
-						value="#{studentBean.model.student}" required="true">
+						value="#{studentBean.model.student}" required="true"
+						converter="ProjectConverter">
 						<f:selectItem itemLabel="Select" itemValue="" />
 						<f:selectItems value="#{studentBean.model.allStudents}" var="student"
 							itemLabel="#{student.firstname} #{student.lastname}"
@@ -60,9 +61,10 @@
 					required="true" />
 
 				<p:selectCheckboxMenu id="studentPreferences"
-					value="#{studentBean.model.selectedStudentPreferences}"
+					value="#{studentBean.model.student.preferences}"
 					label="Preferences" multiple="true" filter="true"
-					filterMatchMode="startsWith" panelStyle="width:250px">
+					filterMatchMode="startsWith" panelStyle="width:250px"
+					converter="ProjectConverter">
 					<f:selectItems value="#{studentBean.model.allProjects}" var="project"
 						itemLabel="#{project.name}" itemValue="#{project}" />
 				</p:selectCheckboxMenu>
@@ -77,6 +79,7 @@
 		<p:commandButton id="submitStudentBtn" value="Submit"
 			action="#{studentBean.processOperation}"
 			disabled="#{studentBean.model.submitBtnDisabled}"
+			update="@form"
 			title="Submit the values" />
 	</h:form>
 </h:body>

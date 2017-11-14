@@ -1,5 +1,7 @@
 package main.gsystems.pap.rf.dao;
 
+import java.util.List;
+
 import main.gsystems.pap.rf.BaseDAOBean;
 import main.gsystems.pap.rf.entity.StudentEntity;
 
@@ -18,6 +20,11 @@ public class StudentDAOBean extends BaseDAOBean<StudentEntity, Long> implements 
 	@Override
 	public void updateStudent(StudentEntity student) {
 		update(student);
+	}
+
+	@Override
+	public List<StudentEntity> findAllStudents() {
+		return findAll();
 	}
 
 }

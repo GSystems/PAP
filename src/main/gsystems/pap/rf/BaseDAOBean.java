@@ -26,11 +26,11 @@ public abstract class BaseDAOBean<T, K extends Serializable> implements BaseDAO<
 
 	private EntityManagerFactory emf;
 
-<<<<<<< HEAD
+
 //	@PersistenceContext
-=======
+
 	@PersistenceContext
->>>>>>> branch 'master' of https://github.com/GSystems/PAP.git
+
 	private EntityManager entityManager;
 
 	public static final Logger LOGGER = Logger.getLogger(BaseDAOBean.class.getName());

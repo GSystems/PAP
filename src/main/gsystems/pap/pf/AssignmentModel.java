@@ -13,8 +13,6 @@ public class AssignmentModel {
 
 	private List<StudentDTO> allStudents;
 	private List<ProjectDTO> allProjects;
-	private List<StudentDTO> selectedProjectPreferences;
-	private List<ProjectDTO> selectedStudentPreferences;
 
 	private String operation;
 	private String subject;
@@ -64,22 +62,6 @@ public class AssignmentModel {
 
 	public void setAllProjects(List<ProjectDTO> allProjects) {
 		this.allProjects = allProjects;
-	}
-
-	public List<StudentDTO> getSelectedProjectPreferences() {
-		return selectedProjectPreferences;
-	}
-
-	public void setSelectedProjectPreferences(List<StudentDTO> selectedProjectPreferences) {
-		this.selectedProjectPreferences = selectedProjectPreferences;
-	}
-
-	public List<ProjectDTO> getSelectedStudentPreferences() {
-		return selectedStudentPreferences;
-	}
-
-	public void setSelectedStudentPreferences(List<ProjectDTO> selectedStudentPreferences) {
-		this.selectedStudentPreferences = selectedStudentPreferences;
 	}
 
 	public String getOperation() {

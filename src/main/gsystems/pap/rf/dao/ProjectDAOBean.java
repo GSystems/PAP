@@ -1,5 +1,7 @@
 package main.gsystems.pap.rf.dao;
 
+import java.util.List;
+
 import main.gsystems.pap.rf.BaseDAOBean;
 import main.gsystems.pap.rf.entity.ProjectEntity;
 
@@ -18,6 +20,11 @@ public class ProjectDAOBean extends BaseDAOBean<ProjectEntity, Long> implements 
 	@Override
 	public void updateProject(ProjectEntity project) {
 		update(project);
+	}
+
+	@Override
+	public List<ProjectEntity> findAllProjects() {
+		return findAll();
 	}
 
 }

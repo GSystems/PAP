@@ -29,11 +29,12 @@ public class ProjectBean implements Serializable {
 		model.setStudent(new StudentDTO());
 		model.setProject(new ProjectDTO());
 		model.setSubmitBtnDisabled(true);
-		
+
 		model.setAllProjects(new ArrayList<>());
 		model.setAllStudents(new ArrayList<>());
 		model.generateProjects();
 		model.generateStudents();
+
 	}
 
 	public AssignmentModel getModel() {
@@ -51,7 +52,7 @@ public class ProjectBean implements Serializable {
 	public void setFacade(AssignmentFacade facade) {
 		this.facade = facade;
 	}
-	
+
 	public void proccessOperation() {
 		facade.insertProject(model.getProject());
 	}

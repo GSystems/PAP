@@ -29,8 +29,12 @@ public class AssignmentTransformer {
 		project.setCoordinator(dto.getCoordinator());
 		project.setId(dto.getId());
 		project.setName(dto.getName());
-		project.setPreferences(toStudentsListFromDTO(dto.getPreferences()));
-		project.setSkills(toSkillListFromDTO(dto.getSkills()));
+		if(dto.getPreferences() != null) {
+			project.setPreferences(toStudentsListFromDTO(dto.getPreferences()));	
+		}
+		if(dto.getSkills() != null) {
+			project.setSkills(toSkillListFromDTO(dto.getSkills()));
+		}
 		return project;
 	}
 
@@ -43,31 +47,39 @@ public class AssignmentTransformer {
 	}
 
 	public static StudentDTO fromStudentToDTO(Student student) {
-		StudentDTO dto = new StudentDTO();
-		dto.setEmail(student.getEmail());
-		dto.setFirstname(student.getFirstname());
-		dto.setId(student.getId());
-		dto.setLastname(student.getLastname());
-		dto.setPreferences(fromProjectListToDTO(student.getPreferences()));
-		dto.setSkills(fromSkillListToDTO(student.getSkills()));
-		return dto;
+		StudentDTO studentDTO = new StudentDTO();
+		studentDTO.setEmail(student.getEmail());
+		studentDTO.setFirstname(student.getFirstname());
+		studentDTO.setId(student.getId());
+		studentDTO.setLastname(student.getLastname());
+		if(student.getPreferences() != null) {
+			studentDTO.setPreferences(fromProjectListToDTO(student.getPreferences()));
+		}
+		if(student.getSkills() != null) {
+			studentDTO.setSkills(fromSkillListToDTO(student.getSkills()));
+		}
+		return studentDTO;
 	}
 
-	private static ProjectDTO fromProjectToDTO(Project preference) {
-		ProjectDTO dto = new ProjectDTO();
-		dto.setCapacity(preference.getCapacity());
-		dto.setCoordinator(preference.getCoordinator());
-		dto.setId(preference.getId());
-		dto.setName(preference.getName());
-		dto.setPreferences(fromStudentListToDTO(preference.getPreferences()));
-		dto.setSkills(fromSkillListToDTO(preference.getSkills()));
-		return dto;
+	private static ProjectDTO fromProjectToDTO(Project project) {
+		ProjectDTO projectDTO = new ProjectDTO();
+		projectDTO.setCapacity(project.getCapacity());
+		projectDTO.setCoordinator(project.getCoordinator());
+		projectDTO.setId(project.getId());
+		projectDTO.setName(project.getName());
+		if(project.getPreferences() != null) {
+			projectDTO.setPreferences(fromStudentListToDTO(project.getPreferences()));
+		}
+		if(project.getSkills() != null) {
+			projectDTO.setSkills(fromSkillListToDTO(project.getSkills()));
+		}
+		return projectDTO;
 	}
 
 	public static List<Student> toStudentsListFromDTO(List<StudentDTO> dtoList) {
 		List<Student> students = new ArrayList<>();
-		for (StudentDTO student : dtoList) {
-			students.add(toStudentFromDTO(student));
+		for (StudentDTO studentDTO : dtoList) {
+			students.add(toStudentFromDTO(studentDTO));
 		}
 		return students;
 	}
@@ -96,7 +108,7 @@ public class AssignmentTransformer {
 		}
 		return dtoList;
 	}
-	
+
 	public static Skill toSkillFromDTO(SkillDTO skill) {
 		return new Skill(skill.getName());
 	}

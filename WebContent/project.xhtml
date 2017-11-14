@@ -33,7 +33,7 @@
 
 				<p:outputLabel for="projectPreferences" value="Preferences:" />
 				<p:selectCheckboxMenu id="projectPreferences"
-					value="#{projectBean.model.selectedProjectPreferences}"
+					value="#{studentBean.model.student.preferences}"
 					label="Preferences" multiple="true" filter="true"
 					filterMatchMode="startsWith" panelStyle="width:250px">
 					<f:selectItems value="#{projectBean.model.allStudents}"

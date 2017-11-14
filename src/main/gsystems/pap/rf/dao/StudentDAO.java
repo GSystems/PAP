@@ -1,5 +1,7 @@
 package main.gsystems.pap.rf.dao;
 
+import java.util.List;
+
 import main.gsystems.pap.rf.BaseDAO;
 import main.gsystems.pap.rf.entity.StudentEntity;
 
@@ -26,4 +28,11 @@ public interface StudentDAO extends BaseDAO<StudentEntity, Long> {
 	 * @param student
 	 */
 	void updateStudent(StudentEntity student);
+
+	/**
+	 * Retrieve all students
+	 * 
+	 * @return
+	 */
+	List<StudentEntity> findAllStudents();
 }

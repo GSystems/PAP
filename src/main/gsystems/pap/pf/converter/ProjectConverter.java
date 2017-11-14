@@ -20,7 +20,7 @@ public class ProjectConverter implements Converter {
 			try {
 				List<ProjectDTO> projects;
 				ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-				StudentBean bean = (StudentBean) elContext.getELResolver().getValue(elContext, null, "asgnBean");
+				StudentBean bean = (StudentBean) elContext.getELResolver().getValue(elContext, null, "studentBean");
 				projects = bean.getModel().getAllProjects();
 				if (projects != null) {
 					for (ProjectDTO p : projects) {

@@ -67,3 +67,21 @@ INSERT INTO project (name, capacity, coordinator)
     	('BiMr', 2, 'Thomas Mitchel'),
         ('PAP', 3, 'Johny Lexter'),
         ('FIImDB', 1, 'Samuel Noland');
+
+INSERT INTO project_preferences
+	VALUES
+    	(1,2),
+        (1,3),
+        (2,3),
+        (2,1),
+        (2,3),
+        (3,2);
+
+INSERT INTO student_preferences
+	VALUES
+    	(1,1),
+        (1,3),
+        (2,3),
+        (2,2),
+        (3,1),
+        (3,3);

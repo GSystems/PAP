@@ -3,25 +3,24 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
-    <persistence-unit name="PAP" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        
-        <class>main.gsystems.pap.rf.entity.ProjectEntity</class>
-        <class>main.gsystems.pap.rf.entity.SkillEntity</class>
-        <class>main.gsystems.pap.rf.entity.StudentEntity</class>
-        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+	<persistence-unit name="PAP" transaction-type="RESOURCE_LOCAL">
 
-        <properties>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306"/>
-            <property name="javax.persistence.jdbc.user" value="PAPUser"/>
-            <property name="javax.persistence.jdbc.password" value="PAPPassword"/>
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+<!-- 		<jta-data-source>java:jboss/datasources/CoreDS</jta-data-source> -->
 
-            <!--Hibernate properties-->
-            <property name="hibernate.show_sql" value="false"/>
-            <property name="hibernate.format_sql" value="false"/>
-<!--             <property name="hibernate.hbm2ddl.auto" value="update"/> -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-        </properties>
-    </persistence-unit>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3308/PAP" />
+			<property name="javax.persistence.jdbc.user" value="PAPUser" />
+			<property name="javax.persistence.jdbc.password" value="PAPPassword" />
+
+			<!--Hibernate properties -->
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="false" />
+			<!-- <property name="hibernate.hbm2ddl.auto" value="update"/> -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+		</properties>
+	</persistence-unit>
 </persistence>
