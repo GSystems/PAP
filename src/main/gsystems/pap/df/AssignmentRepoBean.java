@@ -50,12 +50,12 @@ public class AssignmentRepoBean implements AssignmentRepo {
 
 	@Override
 	public List<Student> findAllStudents() {
-		return AssignmentMapper.toStudentFromEntityList(studentDAO.findAll());
+		return AssignmentMapper.toStudentFromEntityList(studentDAO.findAllStudents());
 	}
 
 	@Override
 	public List<Project> findAllProjects() {
-		return AssignmentMapper.toProjectListFromEntity(projectDAO.findAll());
+		return AssignmentMapper.toProjectListFromEntity(projectDAO.findAllProjects());
 	}
 
 }
