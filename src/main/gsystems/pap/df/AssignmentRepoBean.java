@@ -2,7 +2,7 @@ package main.gsystems.pap.df;
 
 import java.util.List;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
 
 import main.gsystems.pap.df.mapper.AssignmentMapper;
 import main.gsystems.pap.df.model.Project;
@@ -14,13 +14,13 @@ import main.gsystems.pap.rf.dao.StudentDAO;
 
 public class AssignmentRepoBean implements AssignmentRepo {
 
-	@Inject
+	@EJB
 	StudentDAO studentDAO;
 
-	@Inject
+	@EJB
 	SkillDAO skillDAO;
 
-	@Inject
+	@EJB
 	ProjectDAO projectDAO;
 
 	@Override
@@ -56,6 +56,30 @@ public class AssignmentRepoBean implements AssignmentRepo {
 	@Override
 	public List<Project> findAllProjects() {
 		return AssignmentMapper.toProjectListFromEntity(projectDAO.findAllProjects());
+	}
+
+	public StudentDAO getStudentDAO() {
+		return studentDAO;
+	}
+
+	public void setStudentDAO(StudentDAO studentDAO) {
+		this.studentDAO = studentDAO;
+	}
+
+	public SkillDAO getSkillDAO() {
+		return skillDAO;
+	}
+
+	public void setSkillDAO(SkillDAO skillDAO) {
+		this.skillDAO = skillDAO;
+	}
+
+	public ProjectDAO getProjectDAO() {
+		return projectDAO;
+	}
+
+	public void setProjectDAO(ProjectDAO projectDAO) {
+		this.projectDAO = projectDAO;
 	}
 
 }

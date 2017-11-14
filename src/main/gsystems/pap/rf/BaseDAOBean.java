@@ -11,6 +11,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import main.gsystems.pap.util.GeneralConstants;
@@ -25,7 +26,11 @@ public abstract class BaseDAOBean<T, K extends Serializable> implements BaseDAO<
 
 	private EntityManagerFactory emf;
 
+<<<<<<< HEAD
 //	@PersistenceContext
+=======
+	@PersistenceContext
+>>>>>>> branch 'master' of https://github.com/GSystems/PAP.git
 	private EntityManager entityManager;
 
 	public static final Logger LOGGER = Logger.getLogger(BaseDAOBean.class.getName());
