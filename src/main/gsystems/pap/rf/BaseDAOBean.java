@@ -6,12 +6,9 @@ import java.lang.reflect.Type;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import main.gsystems.pap.util.GeneralConstants;
@@ -21,16 +18,11 @@ import main.gsystems.pap.util.GeneralConstants;
  * @param <T> the specific entity type
  * @param <K> the specific entity primary key type
  */
-//@TransactionManagement(TransactionManagementType.CONTAINER)
 public abstract class BaseDAOBean<T, K extends Serializable> implements BaseDAO<T, K> {
 
 	private EntityManagerFactory emf;
 
-
 //	@PersistenceContext
-
-	@PersistenceContext
-
 	private EntityManager entityManager;
 
 	public static final Logger LOGGER = Logger.getLogger(BaseDAOBean.class.getName());
@@ -55,7 +47,6 @@ public abstract class BaseDAOBean<T, K extends Serializable> implements BaseDAO<
 	}
 
 	@Override
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public T insert(T t) {
 		emf = Persistence.createEntityManagerFactory(GeneralConstants.SCHEMA);
 		entityManager = emf.createEntityManager();
@@ -73,7 +64,6 @@ public abstract class BaseDAOBean<T, K extends Serializable> implements BaseDAO<
 	}
 
 	@Override
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public T update(T t) {
 		emf = Persistence.createEntityManagerFactory(GeneralConstants.SCHEMA);
 		entityManager = emf.createEntityManager();
@@ -86,13 +76,11 @@ public abstract class BaseDAOBean<T, K extends Serializable> implements BaseDAO<
 	}
 
 	@Override
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public T findById(K id) {
 		return entityManager.find(type, id);
 	}
 
 	@Override
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public List<T> findAll() {
 		emf = Persistence.createEntityManagerFactory(GeneralConstants.SCHEMA);
 		entityManager = emf.createEntityManager();
@@ -105,7 +93,6 @@ public abstract class BaseDAOBean<T, K extends Serializable> implements BaseDAO<
 	}
 
 	@Override
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void flush() {
 		entityManager.flush();
 	}

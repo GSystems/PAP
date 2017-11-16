@@ -2,7 +2,7 @@ package main.gsystems.pap.df;
 
 import java.util.List;
 
-import javax.ejb.EJB;
+import javax.inject.Inject;
 
 import main.gsystems.pap.df.mapper.AssignmentMapper;
 import main.gsystems.pap.df.model.Project;
@@ -14,13 +14,13 @@ import main.gsystems.pap.rf.dao.StudentDAO;
 
 public class AssignmentRepoBean implements AssignmentRepo {
 
-	@EJB
+	@Inject
 	StudentDAO studentDAO;
 
-	@EJB
+	@Inject
 	SkillDAO skillDAO;
 
-	@EJB
+	@Inject
 	ProjectDAO projectDAO;
 
 	@Override

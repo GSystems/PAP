@@ -23,7 +23,7 @@ public class StudentBean implements Serializable {
 	private AssignmentModel model;
 
 	@EJB
-	private transient AssignmentFacade facade;
+	private AssignmentFacade facade;
 
 	@PostConstruct
 	public void init() {

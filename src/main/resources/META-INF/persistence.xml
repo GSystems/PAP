@@ -6,8 +6,11 @@
 	<persistence-unit name="PAP" transaction-type="RESOURCE_LOCAL">
 
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-<!-- 		<jta-data-source>java:jboss/datasources/CoreDS</jta-data-source> -->
+		<!-- <jta-data-source>java:jboss/datasources/CoreDS</jta-data-source> -->
 
+		<class>main.gsystems.pap.rf.entity.ProjectEntity</class>
+		<class>main.gsystems.pap.rf.entity.SkillEntity</class>
+		<class>main.gsystems.pap.rf.entity.StudentEntity</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 
 		<properties>
