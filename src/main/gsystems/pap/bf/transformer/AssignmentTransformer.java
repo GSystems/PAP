@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.gsystems.pap.bfcl.dto.ProjectDTO;
-import main.gsystems.pap.bfcl.dto.SkillDTO;
 import main.gsystems.pap.bfcl.dto.StudentDTO;
 import main.gsystems.pap.df.model.Project;
-import main.gsystems.pap.df.model.Skill;
 import main.gsystems.pap.df.model.Student;
 
 public class AssignmentTransformer {
@@ -32,9 +30,7 @@ public class AssignmentTransformer {
 		if(dto.getPreferences() != null) {
 			project.setPreferences(toStudentsListFromDTO(dto.getPreferences()));	
 		}
-		if(dto.getSkills() != null) {
-			project.setSkills(toSkillListFromDTO(dto.getSkills()));
-		}
+		project.setSkills(dto.getSkills());
 		return project;
 	}
 
@@ -55,9 +51,7 @@ public class AssignmentTransformer {
 		if(student.getPreferences() != null) {
 			studentDTO.setPreferences(fromProjectListToDTO(student.getPreferences()));
 		}
-		if(student.getSkills() != null) {
-			studentDTO.setSkills(fromSkillListToDTO(student.getSkills()));
-		}
+		studentDTO.setSkills(student.getSkills());
 		return studentDTO;
 	}
 
@@ -70,9 +64,7 @@ public class AssignmentTransformer {
 		if(project.getPreferences() != null) {
 			projectDTO.setPreferences(fromStudentListToDTO(project.getPreferences()));
 		}
-		if(project.getSkills() != null) {
-			projectDTO.setSkills(fromSkillListToDTO(project.getSkills()));
-		}
+		projectDTO.setSkills(project.getSkills());
 		return projectDTO;
 	}
 
@@ -90,27 +82,22 @@ public class AssignmentTransformer {
 		student.setFirstname(dto.getFirstname());
 		student.setId(dto.getId());
 		student.setLastname(dto.getLastname());
+		student.setPreferences(getStudentPreferences(dto.getPreferences()));
+		student.setSkills(dto.getSkills());
 		return student;
 	}
-
-	public static List<Skill> toSkillListFromDTO(List<SkillDTO> skillsDTO) {
-		List<Skill> skills = new ArrayList<>();
-		for (SkillDTO skill : skillsDTO) {
-			skills.add(new Skill(skill.getName()));
+	
+	public static List<Project> getStudentPreferences(List<ProjectDTO> projectsDTO) {
+		List<Project> projects = new ArrayList<>();
+		for(ProjectDTO projectDTO : projectsDTO) {
+			Project project = new Project();
+			project.setCapacity(projectDTO.getCapacity());
+			project.setCoordinator(projectDTO.getCoordinator());
+			project.setId(projectDTO.getId());
+			project.setName(projectDTO.getName());
+			projects.add(project);
 		}
-		return skills;
-	}
-
-	public static List<SkillDTO> fromSkillListToDTO(List<Skill> skills) {
-		List<SkillDTO> dtoList = new ArrayList<>();
-		for (Skill skill : skills) {
-			dtoList.add(new SkillDTO(skill.getName()));
-		}
-		return dtoList;
-	}
-
-	public static Skill toSkillFromDTO(SkillDTO skill) {
-		return new Skill(skill.getName());
+		return projects;
 	}
 
 }

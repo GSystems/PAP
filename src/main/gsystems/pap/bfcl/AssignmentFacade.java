@@ -15,13 +15,6 @@ public interface AssignmentFacade {
 	void insertStudent(StudentDTO student);
 
 	/**
-	 * Add a new skill
-	 * 
-	 * @param skill
-	 */
-	void insertSkill(String skill);
-
-	/**
 	 * Add a new project
 	 * 
 	 * @param project

@@ -7,16 +7,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<body>
-		<ui:composition>
+<body>
+	<ui:composition>
+	
+		<h1>PAP Application</h1>
 
-			<p:selectOneButton value="#{asgnBean.model.subject}" cellpading="5">
-				<f:selectItem itemLabel="Projects" itemValue="project" />
-				<f:selectItem itemLabel="Skills" itemValue="skill" />
-				<f:selectItem itemLabel="Students" itemValue="student" />
-				<p:ajax even="" listener="#{asgnBean.subjectSelector()}" update="" />
-			</p:selectOneButton>
-			
-		</ui:composition>
-	</body>
+	</ui:composition>
+</body>
 </html>

@@ -2,7 +2,6 @@ package main.gsystems.pap.rf.entity;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Fetch;
@@ -28,16 +27,10 @@ public class StudentEntity {
 	private String firstname;
 	private String lastname;
 	private String email;
+	private String skills;
 
 	@Fetch(FetchMode.SELECT)
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name="student_skill",
-		joinColumns = @JoinColumn(name = "id_student", referencedColumnName = "id"),
-		inverseJoinColumns = @JoinColumn(name = "id_skill", referencedColumnName = "id"))
-	private List<SkillEntity> skills;
-
-	@Fetch(FetchMode.SELECT)
-	@ManyToMany (fetch = FetchType.EAGER)
+	@OneToMany (fetch = FetchType.EAGER)
 	@JoinTable(name="student_preferences",
 		joinColumns = @JoinColumn(name="id_project", referencedColumnName = "id"),
 		inverseJoinColumns = @JoinColumn(name = "id_student", referencedColumnName = "id"))
@@ -75,11 +68,11 @@ public class StudentEntity {
 		this.email = email;
 	}
 
-	public List<SkillEntity> getSkills() {
+	public String getSkills() {
 		return skills;
 	}
 
-	public void setSkills(List<SkillEntity> skills) {
+	public void setSkills(String skills) {
 		this.skills = skills;
 	}
 

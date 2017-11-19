@@ -4,12 +4,13 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
-import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
 
 import main.gsystems.pap.util.GeneralConstants;
 
@@ -21,19 +22,15 @@ import main.gsystems.pap.util.GeneralConstants;
 public abstract class BaseDAOBean<T, K extends Serializable> implements BaseDAO<T, K> {
 
 	private EntityManagerFactory emf;
-
-//	@PersistenceContext
 	private EntityManager entityManager;
-
-	public static final Logger LOGGER = Logger.getLogger(BaseDAOBean.class.getName());
-
-//	@PostConstruct
-//	public void init() {
-//		emf = Persistence.createEntityManagerFactory(GeneralConstants.SCHEMA);
-//		emf.createEntityManager();
-//	}
-
 	private Class<T> type;
+	
+	@PostConstruct
+	public void init() {
+		emf = Persistence.createEntityManagerFactory(GeneralConstants.SCHEMA);
+		entityManager = emf.createEntityManager();
+		entityManager.getTransaction().begin();
+	}
 
 	@SuppressWarnings("unchecked")
 	public BaseDAOBean() {
@@ -47,31 +44,25 @@ public abstract class BaseDAOBean<T, K extends Serializable> implements BaseDAO<
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public T insert(T t) {
-		emf = Persistence.createEntityManagerFactory(GeneralConstants.SCHEMA);
-		entityManager = emf.createEntityManager();
-		entityManager.getTransaction().begin();
 		entityManager.persist(t);
 		entityManager.getTransaction().commit();
-		entityManager.close();
-		emf.close();
 		return t;
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void delete(K id) {
 		entityManager.remove(entityManager.getReference(type, id));
+		entityManager.getTransaction().commit();
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public T update(T t) {
-		emf = Persistence.createEntityManagerFactory(GeneralConstants.SCHEMA);
-		entityManager = emf.createEntityManager();
-		entityManager.getTransaction().begin();
 		entityManager.merge(t);
 		entityManager.getTransaction().commit();
-		entityManager.close();
-		emf.close();
 		return t;
 	}
 
@@ -81,15 +72,9 @@ public abstract class BaseDAOBean<T, K extends Serializable> implements BaseDAO<
 	}
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public List<T> findAll() {
-		emf = Persistence.createEntityManagerFactory(GeneralConstants.SCHEMA);
-		entityManager = emf.createEntityManager();
-		entityManager.getTransaction().begin();
-		TypedQuery<T> query = entityManager.createQuery("from " + type.getName(), type);
-		List<T> results = query.getResultList();
-		entityManager.close();
-		emf.close();
-		return results;
+		return entityManager.createQuery("from " + type.getName(), type).getResultList();
 	}
 
 	@Override

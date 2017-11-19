@@ -13,42 +13,17 @@
 	<h:form>
 		<p:panel id="studentPanel" header="Student Panel"
 			value="#{studentBean.model.student}" style="margin-bottom:10px;">
-			<h:panelGrid columns="1" cellpadding="5">
-				<h:outputLabel for="operationSelector"
-					value="Please select the operation *" />
-				<p:selectOneMenu id="operationSelector"
-					value="#{studentBean.model.operation}" required="true">
-					<f:selectItem itemLabel="Select" itemValue="" />
-					<f:selectItem itemLabel="Add" itemValue="add" />
-					<f:selectItem itemLabel="Edit" itemValue="edit" />
-					<p:ajax event="change"
-						update="submitStudentBtn studentSelectorPanel"
-						listener="#{studentBean.detectOperation}" />
-				</p:selectOneMenu>
+			<h:panelGrid columns="2" cellpadding="5">
 
-				<p:panelGrid columns="2" id="studentSelectorPanel"
-					rendered="#{studentBean.model.updateOperation}">
-					<h:outputLabel for="studentSelector"
-						value="Select the student that you want to edit *" />
-					<p:selectOneMenu id="studentSelector"
-						value="#{studentBean.model.student}" required="true"
-						converter="ProjectConverter">
-						<f:selectItem itemLabel="Select" itemValue="" />
-						<f:selectItems value="#{studentBean.model.allStudents}" var="student"
-							itemLabel="#{student.firstname} #{student.lastname}"
-							itemValue="#{student}" />
-					</p:selectOneMenu>
-				</p:panelGrid>
-
-				<p:outputLabel for="firstname" value="First Name: " />
+				<p:outputLabel for="firstname" value="#{msg['firstname']}" />
 				<p:inputText id="firstname" required="true"
 					value="#{studentBean.model.student.firstname}" />
 
-				<p:outputLabel for="lastname" value="Last Name: " />
+				<p:outputLabel for="lastname" value="#{msg['lastname']}" />
 				<p:inputText id="lastname" required="true"
 					value="#{studentBean.model.student.lastname}" />
 
-				<p:outputLabel for="email" value="Email" />
+				<p:outputLabel for="email" value="#{msg['email']}" />
 				<p:inputText id="email" value="#{studentBean.model.student.email}"
 					validatorMessage="Invalid email format">
 					<p:ajax event="change" update="growl" />
@@ -56,31 +31,42 @@
 						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 				</p:inputText>
 
-				<p:outputLabel for="skills" value="Skills" />
-				<p:inputText id="skills" value="#{studentBean.model.skills}"
+				<p:outputLabel for="skills" value="#{msg['skills']}" />
+				<p:inputText id="skills" value="#{studentBean.model.student.skills}"
 					required="true" />
 
 				<p:selectCheckboxMenu id="studentPreferences"
 					value="#{studentBean.model.student.preferences}"
-					label="Preferences" multiple="true" filter="true"
+					label="#{msg['preferences']}" multiple="true" filter="true"
 					filterMatchMode="startsWith" panelStyle="width:250px"
 					converter="ProjectConverter">
-					<f:selectItems value="#{studentBean.model.allProjects}" var="project"
-						itemLabel="#{project.name}" itemValue="#{project}" />
+					<f:selectItems value="#{studentBean.model.allProjects}"
+						var="project" itemLabel="#{project.name}" itemValue="#{project}" />
 				</p:selectCheckboxMenu>
 
 				<p:tooltip for="email" mouseTracking="true"
 					value="Please enter a valid email address" />
 			</h:panelGrid>
+
 		</p:panel>
 
 		<p:growl id="growl" life="1500" />
 
 		<p:commandButton id="submitStudentBtn" value="Submit"
-			action="#{studentBean.processOperation}"
-			disabled="#{studentBean.model.submitBtnDisabled}"
-			update="@form"
+			action="#{studentBean.processOperation}" update="@form"
 			title="Submit the values" />
 	</h:form>
+
+	<h:form id="localeMenu">
+		<p:selectOneMenu id="intern" value="#{studentBean.model.locale}">
+			<f:selectItem itemLabel="En" itemValue="en_US" />
+			<f:selectItem itemLabel="Ro" itemValue="ro_RO" />
+			<p:ajax event="change" listener="#{studentBean.setLocale()}" />
+		</p:selectOneMenu>
+		<br />
+		<p:commandButton value="Submit" update="@([id$='studentPanel'])" />
+
+	</h:form>
+
 </h:body>
 </html>

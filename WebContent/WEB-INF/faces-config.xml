@@ -4,6 +4,18 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
 	version="2.2">
 
+	<application>
+		<locale-config>
+			<default-locale>en_US</default-locale>
+			<supported-locale>ro_RO</supported-locale>
+		</locale-config>
+
+		<resource-bundle>
+			<base-name>main.gsystems.pap.util.messages</base-name>
+			<var>msg</var>
+		</resource-bundle>
+	</application>
+
 	<converter>
 		<converter-for-class>main.gsystems.pap.bfcl.dto.ProjectDTO</converter-for-class>
 		<converter-class>main.gsystems.pap.pf.converter.ProjectConverter</converter-class>

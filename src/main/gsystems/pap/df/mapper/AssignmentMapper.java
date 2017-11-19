@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.gsystems.pap.df.model.Project;
-import main.gsystems.pap.df.model.Skill;
 import main.gsystems.pap.df.model.Student;
 import main.gsystems.pap.rf.entity.ProjectEntity;
-import main.gsystems.pap.rf.entity.SkillEntity;
 import main.gsystems.pap.rf.entity.StudentEntity;
 
 public class AssignmentMapper {
@@ -32,9 +30,7 @@ public class AssignmentMapper {
 		if (student.getPreferences() != null) {
 			entity.setPreferences(fromProjectListToEntity(student.getPreferences()));
 		}
-		if (student.getSkills() != null) {
-			entity.setSkills(fromSkillListToEntity(student.getSkills()));
-		}
+		entity.setSkills(student.getSkills());
 		return entity;
 	}
 
@@ -56,19 +52,20 @@ public class AssignmentMapper {
 			student.setPreferences(getStudentPreferences(entity.getPreferences()));
 		}
 		if (entity.getSkills() != null) {
-			student.setSkills(toSkillListFromEntity(entity.getSkills()));
+			student.setSkills(entity.getSkills());
 		}
 		return student;
 	}
 
 	private static List<Project> getStudentPreferences(List<ProjectEntity> projectEntities) {
 		List<Project> projects = new ArrayList<>();
-		for(ProjectEntity projectEntity : projectEntities) {
+		for (ProjectEntity projectEntity : projectEntities) {
 			Project project = new Project();
 			project.setCapacity(projectEntity.getCapacity());
 			project.setCoordinator(projectEntity.getCoordinator());
 			project.setId(projectEntity.getId());
 			project.setName(projectEntity.getName());
+			project.setSkills(projectEntity.getSkills());
 			projects.add(project);
 		}
 		return projects;
@@ -101,9 +98,7 @@ public class AssignmentMapper {
 		if (project.getPreferences() != null) {
 			entity.setPreferences(fromStudentListToEntity(project.getPreferences()));
 		}
-		if (project.getSkills() != null) {
-			entity.setSkills(fromSkillListToEntity(project.getSkills()));
-		}
+		entity.setSkills(project.getSkills());
 		return entity;
 	}
 
@@ -116,15 +111,13 @@ public class AssignmentMapper {
 		if (entity.getPreferences() != null) {
 			project.setPreferences(getProjectPreferences(entity.getPreferences()));
 		}
-		if (entity.getSkills() != null) {
-			project.setSkills(toSkillListFromEntity(entity.getSkills()));
-		}
+		project.setSkills(entity.getSkills());
 		return project;
 	}
 
 	private static List<Student> getProjectPreferences(List<StudentEntity> studentEntities) {
 		List<Student> students = new ArrayList<>();
-		for(StudentEntity studentEntity : studentEntities) {
+		for (StudentEntity studentEntity : studentEntities) {
 			Student student = new Student();
 			student.setEmail(studentEntity.getEmail());
 			student.setFirstname(studentEntity.getEmail());
@@ -132,26 +125,6 @@ public class AssignmentMapper {
 			students.add(student);
 		}
 		return students;
-	}
-
-	public static List<SkillEntity> fromSkillListToEntity(List<Skill> skills) {
-		List<SkillEntity> entityList = new ArrayList<>();
-		for (Skill skill : skills) {
-			entityList.add(new SkillEntity(null, skill.getName()));
-		}
-		return entityList;
-	}
-
-	public static SkillEntity fromSkillToEntity(Skill skill) {
-		return new SkillEntity(null, skill.getName());
-	}
-
-	public static List<Skill> toSkillListFromEntity(List<SkillEntity> entityList) {
-		List<Skill> skills = new ArrayList<>();
-		for (SkillEntity entity : entityList) {
-			skills.add(new Skill(entity.getName()));
-		}
-		return skills;
 	}
 
 }

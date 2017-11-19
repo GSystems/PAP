@@ -9,8 +9,8 @@ public class Project {
 	private Integer capacity;
 	private String coordinator;
 
+	private String skills;
 	private List<Student> preferences;
-	private List<Skill> skills;
 
 	public Integer getId() {
 		return id;
@@ -52,11 +52,11 @@ public class Project {
 		this.preferences = preferences;
 	}
 
-	public List<Skill> getSkills() {
+	public String getSkills() {
 		return skills;
 	}
 
-	public void setSkills(List<Skill> skills) {
+	public void setSkills(String skills) {
 		this.skills = skills;
 	}
 

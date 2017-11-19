@@ -10,7 +10,6 @@ import javax.inject.Inject;
 import main.gsystems.pap.bf.transformer.AssignmentTransformer;
 import main.gsystems.pap.bfcl.AssignmentFacade;
 import main.gsystems.pap.bfcl.dto.ProjectDTO;
-import main.gsystems.pap.bfcl.dto.SkillDTO;
 import main.gsystems.pap.bfcl.dto.StudentDTO;
 import main.gsystems.pap.df.AssignmentRepo;
 
@@ -24,11 +23,6 @@ public class AssignmentFacadeBean implements AssignmentFacade {
 	@Override
 	public void insertStudent(StudentDTO student) {
 		repo.insertStudent(AssignmentTransformer.toStudentFromDTO(student));
-	}
-
-	@Override
-	public void insertSkill(String skillName) {
-		repo.insertSkill(AssignmentTransformer.toSkillFromDTO(new SkillDTO(skillName)));
 	}
 
 	@Override

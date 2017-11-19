@@ -14,15 +14,13 @@ public class AssignmentModel {
 	private List<StudentDTO> allStudents;
 	private List<ProjectDTO> allProjects;
 
-	private String operation;
 	private String subject;
+	private String operation;
 
-	private Boolean addOperation;
-	private Boolean updateOperation;
-	private Boolean studentSubject;
-	private Boolean projectSubject;
-	private Boolean submitBtnDisabled;
-	private Boolean studentSelector;
+	private boolean studentPanelFlag;
+	private boolean projectPanelFlag;
+	
+	private String locale = "en_us";
 
 	public ProjectDTO getProject() {
 		return project;
@@ -64,14 +62,6 @@ public class AssignmentModel {
 		this.allProjects = allProjects;
 	}
 
-	public String getOperation() {
-		return operation;
-	}
-
-	public void setOperation(String operation) {
-		this.operation = operation;
-	}
-
 	public String getSubject() {
 		return subject;
 	}
@@ -80,101 +70,36 @@ public class AssignmentModel {
 		this.subject = subject;
 	}
 
-	public Boolean getUpdateOperation() {
-		return updateOperation;
+	public String getOperation() {
+		return operation;
 	}
 
-	public void setUpdateOperation(Boolean updateOperation) {
-		this.updateOperation = updateOperation;
+	public void setOperation(String operation) {
+		this.operation = operation;
 	}
 
-	public Boolean getAddOperation() {
-		return addOperation;
+	public Boolean getStudentPanelFlag() {
+		return studentPanelFlag;
 	}
 
-	public void setAddOperation(Boolean addOperation) {
-		this.addOperation = addOperation;
+	public void setStudentPanelFlag(Boolean studentPanelFlag) {
+		this.studentPanelFlag = studentPanelFlag;
 	}
 
-	public Boolean getStudentSubject() {
-		return studentSubject;
+	public boolean getProjectPanelFlag() {
+		return projectPanelFlag;
 	}
 
-	public void setStudentSubject(Boolean studentSubject) {
-		this.studentSubject = studentSubject;
+	public void setProjectPanelFlag(boolean projectPanelFlag) {
+		this.projectPanelFlag = projectPanelFlag;
 	}
 
-	public Boolean getProjectSubject() {
-		return projectSubject;
+	public String getLocale() {
+		return locale;
 	}
 
-	public Boolean getSubmitBtnDisabled() {
-		return submitBtnDisabled;
-	}
-
-	public void setSubmitBtnDisabled(Boolean submitBtnDisabled) {
-		this.submitBtnDisabled = submitBtnDisabled;
-	}
-
-	public void setProjectSubject(Boolean projectSubject) {
-		this.projectSubject = projectSubject;
-	}
-
-	public Boolean getStudentSelector() {
-		return studentSelector;
-	}
-
-	public void setStudentSelector(Boolean studentSelector) {
-		this.studentSelector = studentSelector;
-	}
-
-	// TODO remove this method when database returns real data
-	public void generateProjects() {
-		StudentDTO student1 = new StudentDTO();
-		StudentDTO student2 = new StudentDTO();
-		StudentDTO student3 = new StudentDTO();
-
-		student1.setEmail("john.smith@gmail.com");
-		student1.setFirstname("John");
-		student1.setLastname("Smith");
-
-		student2.setEmail("sam.adams@gmail.com");
-		student2.setFirstname("Sam");
-		student2.setLastname("Adams");
-
-		student3.setEmail("roby.carter@gmail.com");
-		student3.setFirstname("Roby");
-		student3.setLastname("Carter");
-
-		allStudents.add(student1);
-		allStudents.add(student2);
-		allStudents.add(student3);
-	}
-
-	// TODO remove this method when database returns real data
-	public void generateStudents() {
-		ProjectDTO project1 = new ProjectDTO();
-		ProjectDTO project2 = new ProjectDTO();
-		ProjectDTO project3 = new ProjectDTO();
-
-		project1.setCapacity(2);
-		project1.setCoordinator("Thomas Mitchel");
-		project1.setName("BiMr");
-		project1.setPreferences(null);
-
-		project2.setCapacity(3);
-		project2.setCoordinator("Johny Lexter");
-		project2.setName("PAP");
-		project2.setPreferences(null);
-
-		project3.setCapacity(2);
-		project3.setCoordinator("Samuel Noland");
-		project3.setName("FIImDB");
-		project3.setPreferences(null);
-
-		allProjects.add(project1);
-		allProjects.add(project2);
-		allProjects.add(project3);
+	public void setLocale(String locale) {
+		this.locale = locale;
 	}
 
 }

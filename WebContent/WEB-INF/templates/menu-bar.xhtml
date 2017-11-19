@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+
+	<h:form id="menuForm">
+		<p:selectOneButton value="#{navigationBean.model.subject}">
+			<f:selectItem itemLabel="Students" itemValue="student" />
+			<f:selectItem itemLabel="Projects" itemValue="project" />
+			<f:selectItem itemLabel="Assignments" itemValue="asn" />
+			<p:ajax event="change" listener="#{navigationBean.subjectSelector()}" />
+		</p:selectOneButton>
+		<p:commandButton value="#{msg['submit']}" update="@([id$='studentPanel'])" />
+	</h:form>
+
+	<p:panel id="studentPanel"
+		rendered="#{navigationBean.model.studentPanelFlag}">
+		<ui:include src="/WEB-INF/templates/add-student.xhtml" />
+	</p:panel>
+
+	<p:spacer />
+
+</ui:composition>
+</html>

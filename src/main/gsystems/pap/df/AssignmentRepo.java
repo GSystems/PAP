@@ -3,7 +3,6 @@ package main.gsystems.pap.df;
 import java.util.List;
 
 import main.gsystems.pap.df.model.Project;
-import main.gsystems.pap.df.model.Skill;
 import main.gsystems.pap.df.model.Student;
 
 public interface AssignmentRepo {
@@ -14,13 +13,6 @@ public interface AssignmentRepo {
 	 * @param student
 	 */
 	void insertStudent(Student student);
-
-	/**
-	 * Add a new skill
-	 * 
-	 * @param skillFromDTO
-	 */
-	void insertSkill(Skill skill);
 
 	/**
 	 * Add a new project

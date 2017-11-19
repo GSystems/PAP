@@ -1,7 +1,6 @@
 package main.gsystems.pap.pf;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -28,13 +27,8 @@ public class ProjectBean implements Serializable {
 		model = new AssignmentModel();
 		model.setStudent(new StudentDTO());
 		model.setProject(new ProjectDTO());
-		model.setSubmitBtnDisabled(true);
 
-		model.setAllProjects(new ArrayList<>());
-		model.setAllStudents(new ArrayList<>());
-		model.generateProjects();
-		model.generateStudents();
-
+		model.setAllStudents(facade.findAllStudents());
 	}
 
 	public AssignmentModel getModel() {

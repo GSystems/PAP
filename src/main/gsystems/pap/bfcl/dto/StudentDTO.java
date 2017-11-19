@@ -9,7 +9,7 @@ public class StudentDTO {
 	private String lastname;
 	private String email;
 
-	private List<SkillDTO> skills;
+	private String skills;
 	private List<ProjectDTO> preferences;
 
 	public Integer getId() {
@@ -44,20 +44,20 @@ public class StudentDTO {
 		this.email = email;
 	}
 
-	public List<SkillDTO> getSkills() {
-		return skills;
-	}
-
-	public void setSkills(List<SkillDTO> skills) {
-		this.skills = skills;
-	}
-
 	public List<ProjectDTO> getPreferences() {
 		return preferences;
 	}
 
 	public void setPreferences(List<ProjectDTO> preferences) {
 		this.preferences = preferences;
+	}
+
+	public String getSkills() {
+		return skills;
+	}
+
+	public void setSkills(String skills) {
+		this.skills = skills;
 	}
 
 }

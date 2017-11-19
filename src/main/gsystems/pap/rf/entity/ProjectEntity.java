@@ -9,12 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import main.gsystems.pap.util.GeneralConstants;
 
@@ -28,14 +24,7 @@ public class ProjectEntity {
 	private String name;
 	private Integer capacity;
 	private String coordinator;
-
-	@Fetch(FetchMode.SELECT)
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name="project_skill",
-		joinColumns = @JoinColumn(name = "id_project", referencedColumnName = "id"),
-		inverseJoinColumns = @JoinColumn(name = "id_skill", referencedColumnName = "id"))
-	private List<SkillEntity> skills;
-	
+	private String skills;
 
 	@OneToMany(fetch = FetchType.EAGER, targetEntity = StudentEntity.class)
 	@JoinTable(name = "project_preferences",
@@ -83,11 +72,11 @@ public class ProjectEntity {
 		this.preferences = preferences;
 	}
 
-	public List<SkillEntity> getSkills() {
+	public String getSkills() {
 		return skills;
 	}
 
-	public void setSkills(List<SkillEntity> skills) {
+	public void setSkills(String skills) {
 		this.skills = skills;
 	}
 
