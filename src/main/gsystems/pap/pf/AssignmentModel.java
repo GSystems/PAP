@@ -19,7 +19,8 @@ public class AssignmentModel {
 
 	private boolean studentPanelFlag;
 	private boolean projectPanelFlag;
-	
+	private boolean assignmentPanelFlag;
+
 	private String locale = "en_us";
 
 	public ProjectDTO getProject() {
@@ -100,6 +101,14 @@ public class AssignmentModel {
 
 	public void setLocale(String locale) {
 		this.locale = locale;
+	}
+
+	public boolean isAssignmentPanelFlag() {
+		return assignmentPanelFlag;
+	}
+
+	public void setAssignmentPanelFlag(boolean assignmentPanelFlag) {
+		this.assignmentPanelFlag = assignmentPanelFlag;
 	}
 
 }

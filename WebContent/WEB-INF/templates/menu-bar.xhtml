@@ -9,19 +9,27 @@
 
 <ui:composition>
 
-	<h:form id="menuForm">
-		<p:selectOneButton value="#{navigationBean.model.subject}">
-			<f:selectItem itemLabel="Students" itemValue="student" />
-			<f:selectItem itemLabel="Projects" itemValue="project" />
-			<f:selectItem itemLabel="Assignments" itemValue="asn" />
-			<p:ajax event="change" listener="#{navigationBean.subjectSelector()}" />
-		</p:selectOneButton>
-		<p:commandButton value="#{msg['submit']}" update="@([id$='studentPanel'])" />
-	</h:form>
+	<p:panel id="bodyPanel">
 
-	<p:panel id="studentPanel"
-		rendered="#{navigationBean.model.studentPanelFlag}">
-		<ui:include src="/WEB-INF/templates/add-student.xhtml" />
+		<p:panel id="menuPanel">
+			<h:form id="menuForm">
+				<p:selectOneButton value="#{assignmentBean.model.subject}">
+					<f:selectItem itemLabel="Students" itemValue="student" />
+					<f:selectItem itemLabel="Projects" itemValue="project" />
+					<f:selectItem itemLabel="Assignments" itemValue="assignment" />
+					<p:ajax event="change" update="@([id$='bodyPanel']) @([id$='studentPanel'])"
+						listener="#{assignmentBean.subjectSelector()}" />
+				</p:selectOneButton>
+			</h:form>
+		</p:panel>
+
+		<h:outputText value="#{assignmentBean.model.studentPanelFlag}" />
+
+		<p:panel id="studentPanel"
+			rendered="#{assignmentBean.model.studentPanelFlag}">
+
+			<!-- 		<ui:include src="/WEB-INF/templates/add-student.xhtml" /> -->
+		</p:panel>
 	</p:panel>
 
 	<p:spacer />
