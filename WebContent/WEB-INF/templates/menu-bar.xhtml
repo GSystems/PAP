@@ -1,38 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:p="http://primefaces.org/ui">
-
-<ui:composition>
 
 	<p:panel id="bodyPanel">
 
-		<p:panel id="menuPanel">
-			<h:form id="menuForm">
-				<p:selectOneButton value="#{assignmentBean.model.subject}">
-					<f:selectItem itemLabel="Students" itemValue="student" />
-					<f:selectItem itemLabel="Projects" itemValue="project" />
-					<f:selectItem itemLabel="Assignments" itemValue="assignment" />
-					<p:ajax event="change" update="@([id$='bodyPanel']) @([id$='studentPanel'])"
-						listener="#{assignmentBean.subjectSelector()}" />
-				</p:selectOneButton>
-			</h:form>
+		<p:panel id="subjectSelector">
+			<h:outputText value="Subject" />
+			<p:selectOneMenu id="subjectOneMenu"
+				value="#{assignmentBean.model.subject}">
+				<f:selectItem itemLabel="Select" itemValue="" />
+				<f:selectItem itemLabel="Students" itemValue="student" />
+				<f:selectItem itemLabel="Projects" itemValue="project" />
+				<f:selectItem itemLabel="Assignments" itemValue="assignment" />
+				<p:ajax listener="#{assignmentBean.subjectSelector()}"
+					event="change" update="studentParent" process="@this" />
+			</p:selectOneMenu>
 		</p:panel>
 
-		<h:outputText value="#{assignmentBean.model.studentPanelFlag}" />
-
-		<p:panel id="studentPanel"
-			rendered="#{assignmentBean.model.studentPanelFlag}">
-
-			<!-- 		<ui:include src="/WEB-INF/templates/add-student.xhtml" /> -->
+		<p:panel id="studentParent">
+			<ui:include src="/WEB-INF/templates/add-student.xhtml" />
 		</p:panel>
+
 	</p:panel>
 
 	<p:spacer />
 
 </ui:composition>
-</html>

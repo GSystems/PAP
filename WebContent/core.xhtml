@@ -1,7 +1,10 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:head>
@@ -9,13 +12,12 @@
 
 	<h:body>
 
-		<p:panel id="container">
-			<ui:include src="/WEB-INF/templates/header.xhtml" />
+		<ui:include src="/WEB-INF/templates/header.xhtml" />
 
-			<ui:include src="/WEB-INF/templates/menu-bar.xhtml" />
+		<ui:include src="/WEB-INF/templates/menu-bar.xhtml" />
 
-			<ui:include src="/WEB-INF/templates/footer.xhtml" />
-		</p:panel>
+		<ui:include src="/WEB-INF/templates/footer.xhtml" />
+
 	</h:body>
 
 </ui:composition>

@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition>
-	<h:form>
-		<p:panel id="studentPanel" header="Student Panel"
-			value="#{assignmentBean.model.student}" style="margin-bottom:10px;">
+	<p:panel id="studentPanel" header="Student Panel"
+		style="margin-bottom:10px;">
+		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
 
 				<p:outputLabel for="firstname" value="First Name: " />
@@ -22,7 +21,8 @@
 					value="#{assignmentBean.model.student.lastname}" />
 
 				<p:outputLabel for="email" value="Email" />
-				<p:inputText id="email" value="#{assignmentBean.model.student.email}"
+				<p:inputText id="email"
+					value="#{assignmentBean.model.student.email}"
 					validatorMessage="Invalid email format">
 					<p:ajax event="change" update="growl" />
 					<f:validateRegex
@@ -30,8 +30,8 @@
 				</p:inputText>
 
 				<p:outputLabel for="skills" value="Skills" />
-				<p:inputText id="skills" value="#{assignmentBean.model.student.skills}"
-					required="true" />
+				<p:inputText id="skills"
+					value="#{assignmentBean.model.student.skills}" required="true" />
 
 				<p:selectCheckboxMenu id="studentPreferences"
 					value="#{assignmentBean.model.student.preferences}"
@@ -45,13 +45,13 @@
 				<p:tooltip for="email" mouseTracking="true"
 					value="Please enter a valid email address" />
 			</h:panelGrid>
-		</p:panel>
+			<p:growl id="growl" life="1500" />
 
-		<p:growl id="growl" life="1500" />
+			<p:commandButton id="submitStudentBtn" value="Submit"
+				action="#{assignmentBean.processOperation}"
+				title="Submit the values" />
 
-		<p:commandButton id="submitStudentBtn" value="Submit"
-			action="#{assignmentBean.processOperation}"
-			title="Submit the values" />
-	</h:form>
+		</h:form>
+	</p:panel>
+
 </ui:composition>
-</html>

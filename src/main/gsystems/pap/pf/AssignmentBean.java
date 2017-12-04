@@ -38,6 +38,9 @@ public class AssignmentBean implements Serializable {
 
 	public void subjectSelector() {
 		String subject = model.getSubject();
+		if (subject == null) {
+			return;
+		}
 		switch (subject) {
 		case "student":
 			panelController(true, false, false);
