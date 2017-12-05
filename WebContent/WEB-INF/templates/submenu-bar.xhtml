@@ -12,11 +12,11 @@
 	<p:spacer />
 
 	<h:panelGrid id="subjectSelector" cellpadding="5">
-		<p:selectOneButton value="#{asgnBean.model.subject}">
+		<p:selectOneButton value="#{assignmentBean.model.subject}">
 			<f:selectItem itemLabel="Students" itemValue="student" />
 			<f:selectItem itemLabel="Projects" itemValue="project" />
 			<f:selectItem itemLabel="Assignments" itemValue="asn" />
-			<p:ajax listener="#{navigationBean.subjectSelector()}"
+			<p:ajax listener="#{assignmentBean.subjectSelector()}"
 				update="@([id$='subjectEditor'])">
 			</p:ajax>
 		</p:selectOneButton>

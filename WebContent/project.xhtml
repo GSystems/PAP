@@ -12,31 +12,31 @@
 <body>
 	<h:form>
 		<p:panel id="studentPanel" header="Project Panel"
-			value="#{asgnBean.model.student}" style="margin-bottom:10px;">
+			value="#{assignmentBean.model.student}" style="margin-bottom:10px;">
 
 			<h:panelGrid columns="2" cellpadding="5">
 				<p:outputLabel for="name" value="Name:" />
 				<p:inputText id="name" required="true"
-					value="#{projectBean.model.project.name}" />
+					value="#{assignmentBean.model.project.name}" />
 
 				<p:outputLabel for="capacity" value="Capacity:" />
 				<p:inputText id="capacity" required="true"
-					value="#{projectBean.model.project.name}" />
+					value="#{assignmentBean.model.project.name}" />
 
 				<p:outputLabel for="coordinator" value="Coordinator:" />
 				<p:inputText id="coordinator" required="true"
-					value="#{projectBean.model.project.coordinator}" />
+					value="#{assignmentBean.model.project.coordinator}" />
 
 				<p:outputLabel for="skills" value="Skills" />
-				<p:inputText id="skills" value="#{projectBean.model.skills}"
+				<p:inputText id="skills" value="#{assignmentBean.model.skills}"
 					required="true" />
 
 				<p:outputLabel for="projectPreferences" value="Preferences:" />
 				<p:selectCheckboxMenu id="projectPreferences"
-					value="#{studentBean.model.student.preferences}"
+					value="#{assignmentBean.model.student.preferences}"
 					label="Preferences" multiple="true" filter="true"
 					filterMatchMode="startsWith" panelStyle="width:250px">
-					<f:selectItems value="#{projectBean.model.allStudents}"
+					<f:selectItems value="#{assignmentBean.model.allStudents}"
 						var="student" itemLabel="#{student.firstname} #{student.lastname}"
 						itemValue="#{student}" />
 				</p:selectCheckboxMenu>
@@ -45,7 +45,7 @@
 		</p:panel>
 
 		<p:commandButton id="submitProjectBtn" value="Submit"
-			action="#{projectBean.proccessOperation}" title="Submit the values" />
+			action="#{assignmentBean.proccessOperation}" title="Submit the values" />
 	</h:form>
 
 </body>

@@ -11,6 +11,9 @@ import javax.faces.convert.FacesConverter;
 import main.java.pap.bfcl.dto.ProjectDTO;
 import main.java.pap.pf.StudentBean;
 
+import main.gsystems.pap.bfcl.dto.ProjectDTO;
+import main.gsystems.pap.pf.AssignmentBean;
+
 @FacesConverter("ProjectConverter")
 public class ProjectConverter implements Converter {
 
@@ -20,7 +23,7 @@ public class ProjectConverter implements Converter {
 			try {
 				List<ProjectDTO> projects;
 				ELContext elContext = FacesContext.getCurrentInstance().getELContext();
-				StudentBean bean = (StudentBean) elContext.getELResolver().getValue(elContext, null, "studentBean");
+				AssignmentBean bean = (AssignmentBean) elContext.getELResolver().getValue(elContext, null, "assignmentBean");
 				projects = bean.getModel().getAllProjects();
 				if (projects != null) {
 					for (ProjectDTO p : projects) {

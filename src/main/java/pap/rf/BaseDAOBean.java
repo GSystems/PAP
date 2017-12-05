@@ -18,7 +18,6 @@ public abstract class BaseDAOBean<T, K extends Serializable> implements BaseDAO<
 	@PersistenceContext
 	private EntityManager entityManager;
 	private Class<T> type;
-	
 
 	@SuppressWarnings("unchecked")
 	public BaseDAOBean() {
