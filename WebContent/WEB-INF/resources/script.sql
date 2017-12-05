@@ -1,3 +1,5 @@
+GRANT ALL PRIVILEGES ON PAP.* TO 'PAPUser'@'localhost' WITH GRANT OPTION;
+
 CREATE TABLE student (
     id int NOT NULL AUTO_INCREMENT,
     firstname varchar(20),
@@ -32,13 +34,13 @@ CREATE TABLE project_preferences (
     );
 
 
-INSERT INTO student (firstname, lastname, email)
+INSERT INTO student (firstname, lastname, email, skills)
 	VALUES
         ('John', 'Smith', 'john.smith@gmail.com', 'Java'),
         ('Sam', 'Adams', 'sam.adams@gmail.com', 'C#'),
         ('Roby', 'Carter', 'roby.carter@gmail.com', 'SQL');
 
-INSERT INTO project (name, capacity, coordinator)
+INSERT INTO project (name, capacity, coordinator, skills)
 	VALUES
     	('BiMr', 2, 'Thomas Mitchel', 'Java'),
         ('PAP', 3, 'Johny Lexter', 'Java'),
