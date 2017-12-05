@@ -10,9 +10,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import main.gsystems.pap.bfcl.AssignmentFacade;
-import main.gsystems.pap.bfcl.dto.ProjectDTO;
-import main.gsystems.pap.bfcl.dto.StudentDTO;
+import main.java.pap.bfcl.AssignmentFacade;
+import main.java.pap.bfcl.dto.ProjectDTO;
+import main.java.pap.bfcl.dto.StudentDTO;
+import main.java.pap.pf.AssignmentModel;
 
 @ManagedBean
 @RequestScoped

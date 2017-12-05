@@ -8,11 +8,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import main.java.pap.bfcl.dto.ProjectDTO;
-import main.java.pap.pf.StudentBean;
-
-import main.gsystems.pap.bfcl.dto.ProjectDTO;
 import main.gsystems.pap.pf.AssignmentBean;
+import main.java.pap.bfcl.dto.ProjectDTO;
 
 @FacesConverter("ProjectConverter")
 public class ProjectConverter implements Converter {
