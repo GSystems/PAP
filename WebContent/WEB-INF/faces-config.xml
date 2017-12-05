@@ -11,14 +11,14 @@
 		</locale-config>
 
 		<resource-bundle>
-			<base-name>main.gsystems.pap.util.messages</base-name>
+			<base-name>main.java.pap.util.messages</base-name>
 			<var>msg</var>
 		</resource-bundle>
 	</application>
 
 	<converter>
-		<converter-for-class>main.gsystems.pap.bfcl.dto.ProjectDTO</converter-for-class>
-		<converter-class>main.gsystems.pap.pf.converter.ProjectConverter</converter-class>
+		<converter-for-class>main.java.pap.bfcl.dto.ProjectDTO</converter-for-class>
+		<converter-class>main.java.pap.pf.converter.ProjectConverter</converter-class>
 	</converter>
 
 </faces-config>
