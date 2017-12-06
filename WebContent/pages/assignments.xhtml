@@ -7,7 +7,11 @@
 	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:p="http://primefaces.org/ui">
 
-	<p:dataTable>
+	<p:panel id="assignmentsPanel" styleClass="simple-panel">
+		<p:panel rendered="#{assignmentBean.model.assignmentsPanelFlag}"
+			header="Assignments" styleClass="simple-panel">
+			<h:outputText value="test" />
+		</p:panel>
+	</p:panel>
 
-	</p:dataTable>
 </ui:composition>

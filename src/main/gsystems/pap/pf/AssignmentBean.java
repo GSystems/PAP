@@ -39,9 +39,7 @@ public class AssignmentBean implements Serializable {
 
 	public void subjectSelector() {
 		String subject = model.getSubject();
-		if (subject == null) {
-			return;
-		}
+
 		switch (subject) {
 		case "student":
 			panelController(true, false, false);
@@ -49,7 +47,7 @@ public class AssignmentBean implements Serializable {
 		case "project":
 			panelController(false, true, false);
 			break;
-		case "assignment":
+		case "assignments":
 			panelController(false, false, true);
 			break;
 		default:
@@ -58,10 +56,10 @@ public class AssignmentBean implements Serializable {
 		}
 	}
 
-	private void panelController(boolean studentPanelFlag, boolean projectPanelFlag, boolean assignmentPanelFlag) {
+	private void panelController(boolean studentPanelFlag, boolean projectPanelFlag, boolean assignmentsPanelFlag) {
 		model.setStudentPanelFlag(studentPanelFlag);
 		model.setProjectPanelFlag(projectPanelFlag);
-		model.setAssignmentPanelFlag(assignmentPanelFlag);
+		model.setAssignmentsPanelFlag(assignmentsPanelFlag);
 	}
 
 	public void processOperation() {
@@ -73,9 +71,25 @@ public class AssignmentBean implements Serializable {
 		showMessage("Operation successful", FacesMessage.SEVERITY_INFO);
 	}
 
-	public void setLocale() {
+	public void localeController() {
 		Locale locale = new Locale(model.getLocale());
 		FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
+	}
+
+	public boolean isSubmenuShown() {
+		String subject = model.getSubject();
+		if (subject!= null && !"".equals(subject)) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isSearchPanelShown() {
+		return ("edit".equals(model.getOperation()));
+	}
+
+	public void searchSubject() {
+
 	}
 
 	private void showMessage(String message, FacesMessage.Severity severity) {

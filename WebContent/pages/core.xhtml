@@ -8,15 +8,19 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:head>
+		<link href="../WEB-INF/resources/css/style.css" rel="stylesheet"
+			type="text/css" />
 	</h:head>
 
 	<h:body>
 
-		<ui:include src="/WEB-INF/templates/header.xhtml" />
+		<h:outputStylesheet library="css" name="style.css" />
+		
+		<ui:include src="../WEB-INF/templates/header.xhtml" />
 
-		<ui:include src="/WEB-INF/templates/menu-bar.xhtml" />
+		<ui:include src="../WEB-INF/templates/body.xhtml" />
 
-		<ui:include src="/WEB-INF/templates/footer.xhtml" />
+		<ui:include src="../WEB-INF/templates/footer.xhtml" />
 
 	</h:body>
 

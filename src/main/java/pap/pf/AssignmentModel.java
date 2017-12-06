@@ -19,7 +19,9 @@ public class AssignmentModel {
 
 	private boolean studentPanelFlag;
 	private boolean projectPanelFlag;
-	private boolean assignmentPanelFlag;
+	private boolean assignmentsPanelFlag;
+	private boolean searchPanelFlag;
+	private String searchValue;
 
 	private String locale = "en_us";
 
@@ -83,7 +85,7 @@ public class AssignmentModel {
 		return studentPanelFlag;
 	}
 
-	public void setStudentPanelFlag(Boolean studentPanelFlag) {
+	public void setStudentPanelFlag(boolean studentPanelFlag) {
 		this.studentPanelFlag = studentPanelFlag;
 	}
 
@@ -95,20 +97,36 @@ public class AssignmentModel {
 		this.projectPanelFlag = projectPanelFlag;
 	}
 
+	public boolean getAssignmentsPanelFlag() {
+		return assignmentsPanelFlag;
+	}
+
+	public void setAssignmentsPanelFlag(boolean assignmentsPanelFlag) {
+		this.assignmentsPanelFlag = assignmentsPanelFlag;
+	}
+
+	public boolean isSearchPanelFlag() {
+		return searchPanelFlag;
+	}
+
+	public void setSearchPanelFlag(boolean searchPanelFlag) {
+		this.searchPanelFlag = searchPanelFlag;
+	}
+
+	public String getSearchValue() {
+		return searchValue;
+	}
+
+	public void setSearchValue(String searchValue) {
+		this.searchValue = searchValue;
+	}
+
 	public String getLocale() {
 		return locale;
 	}
 
 	public void setLocale(String locale) {
 		this.locale = locale;
-	}
-
-	public boolean isAssignmentPanelFlag() {
-		return assignmentPanelFlag;
-	}
-
-	public void setAssignmentPanelFlag(boolean assignmentPanelFlag) {
-		this.assignmentPanelFlag = assignmentPanelFlag;
 	}
 
 }
