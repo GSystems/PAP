@@ -24,6 +24,8 @@ public class AssignmentModel {
 	private String searchValue;
 
 	private String locale = "en_us";
+	
+	private List<String> operations;
 
 	public ProjectDTO getProject() {
 		return project;
@@ -127,6 +129,14 @@ public class AssignmentModel {
 
 	public void setLocale(String locale) {
 		this.locale = locale;
+	}
+
+	public List<String> getOperations() {
+		return operations;
+	}
+
+	public void setOperations(List<String> operations) {
+		this.operations = operations;
 	}
 
 }

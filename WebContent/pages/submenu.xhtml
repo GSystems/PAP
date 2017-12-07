@@ -7,15 +7,15 @@
 	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:p="http://primefaces.org/ui">
 
-	<p:panel id="submenuPanel">
+	<p:panel id="submenuPanel" styleClass="simple-panel">
 		<h:form id="submenuForm">
-			<p:selectOneMenu value="#{assignmentBean.model.operation}"
+			<p:selectOneMenu id="operationSelector" value="#{assignmentBean.model.operation}"
 				rendered="#{assignmentBean.isSubmenuShown()}">
 				<f:selectItem itemLabel="Select" itemValue="" />
-				<f:selectItem itemLabel="Add" itemValue="add" />
-				<f:selectItem itemLabel="Edit" itemValue="edit" />
-				<p:ajax listener="#{assignmentBean.isSearchPanelShown}"
-					event="change" update=":searchPanel" process="@this"/>
+				<f:selectItems value="#{assignmentBean.model.operations}" var="operation"
+					itemLabel="#{operation}" itemValue="#{operation}"/>
+				<p:ajax event="change" update="@this" />
+
 			</p:selectOneMenu>
 		</h:form>
 		<ui:include src="search-panel.xhtml" />

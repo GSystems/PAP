@@ -1,6 +1,8 @@
 package main.gsystems.pap.pf;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.annotation.PostConstruct;
@@ -33,6 +35,11 @@ public class AssignmentBean implements Serializable {
 
 		model.setAllProjects(facade.findAllProjects());
 		model.setAllStudents(facade.findAllStudents());
+		
+		List<String> operations = new ArrayList<>();
+		operations.add("add");
+		operations.add("edit");
+		model.setOperations(operations);
 
 		FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale(model.getLocale()));
 	}
