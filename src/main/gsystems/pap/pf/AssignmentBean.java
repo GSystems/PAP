@@ -16,6 +16,7 @@ import main.java.pap.bfcl.AssignmentFacade;
 import main.java.pap.bfcl.dto.ProjectDTO;
 import main.java.pap.bfcl.dto.StudentDTO;
 import main.java.pap.pf.AssignmentModel;
+import main.java.pap.util.GeneralConstants;
 
 @ManagedBean
 @RequestScoped
@@ -33,8 +34,8 @@ public class AssignmentBean implements Serializable {
 		model.setStudent(new StudentDTO());
 		model.setProject(new ProjectDTO());
 
-		model.setAllProjects(facade.findAllProjects());
-		model.setAllStudents(facade.findAllStudents());
+//		model.setProjects(facade.findAllProjects());
+//		model.setStudents(facade.findAllStudents());
 		
 		List<String> operations = new ArrayList<>();
 		operations.add("add");
@@ -45,7 +46,7 @@ public class AssignmentBean implements Serializable {
 	}
 
 	public void subjectSelector() {
-		String subject = model.getSubject();
+		String subject = model.getSelectedSubject();
 
 		switch (subject) {
 		case "student":
@@ -75,7 +76,7 @@ public class AssignmentBean implements Serializable {
 
 	public void addOperation() {
 		facade.insertStudent(model.getStudent());
-		showMessage("Operation successful", FacesMessage.SEVERITY_INFO);
+		showMessage(GeneralConstants.OPERATION_OK, FacesMessage.SEVERITY_INFO);
 	}
 
 	public void localeController() {
@@ -84,16 +85,25 @@ public class AssignmentBean implements Serializable {
 	}
 
 	public boolean isSubmenuShown() {
-		String subject = model.getSubject();
-		return (subject != null && !"assignments".equals(subject));
+		String subject = model.getSelectedSubject();
+		return (subject != null && !GeneralConstants.ASSIGNMENTS_SUBJECT.equals(subject));
 	}
 
 	public boolean isSearchPanelShown() {
-		return ("edit".equals(model.getOperation()));
+		return (GeneralConstants.EDIT_OPERATION.equals(model.getSelectedOperation()));
 	}
 
 	public void searchSubject() {
+		String email = model.getSearchedValue();
+		if(!"".equals(email)) {
+//			if(GeneralConstants.STUDENT_SUBJECT..equals(model.getSubject())) {
+				model.setStudents(findStudentByEmail(email));
+//			}
+		}
+	}
 
+	private List<StudentDTO> findStudentByEmail(String email) {
+		return facade.findStudentsByEmail(email);
 	}
 
 	private void showMessage(String message, FacesMessage.Severity severity) {
@@ -115,4 +125,5 @@ public class AssignmentBean implements Serializable {
 	public void setFacade(AssignmentFacade facade) {
 		this.facade = facade;
 	}
+
 }

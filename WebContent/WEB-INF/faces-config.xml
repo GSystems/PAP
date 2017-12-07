@@ -20,5 +20,10 @@
 		<converter-for-class>main.java.pap.bfcl.dto.ProjectDTO</converter-for-class>
 		<converter-class>main.java.pap.pf.converter.ProjectConverter</converter-class>
 	</converter>
+	
+	<converter>
+		<converter-for-class>main.java.pap.bfcl.dto.StudentDTO</converter-for-class>
+		<converter-class>main.java.pap.pf.converter.StudentConverter</converter-class>
+	</converter>
 
 </faces-config>

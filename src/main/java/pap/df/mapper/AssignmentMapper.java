@@ -42,7 +42,7 @@ public class AssignmentMapper {
 		return students;
 	}
 
-	private static Student toStudentFromEntity(StudentEntity entity) {
+	public static Student toStudentFromEntity(StudentEntity entity) {
 		Student student = new Student();
 		student.setEmail(entity.getEmail());
 		student.setFirstname(entity.getFirstname());

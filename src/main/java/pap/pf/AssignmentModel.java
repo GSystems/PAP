@@ -11,20 +11,23 @@ public class AssignmentModel {
 	private StudentDTO student;
 	private String skills;
 
-	private List<StudentDTO> allStudents;
-	private List<ProjectDTO> allProjects;
+	private List<StudentDTO> students;
+	private List<ProjectDTO> projects;
 
-	private String subject;
-	private String operation;
+	private ProjectDTO projectForEdit;
+	private StudentDTO studentForEdit;
+
+	private String selectedSubject;
+	private String selectedOperation;
+	private String searchedValue;
 
 	private boolean studentPanelFlag;
 	private boolean projectPanelFlag;
-	private boolean assignmentsPanelFlag;
 	private boolean searchPanelFlag;
-	private String searchValue;
+	private boolean assignmentsPanelFlag;
 
 	private String locale = "en_us";
-	
+
 	private List<String> operations;
 
 	public ProjectDTO getProject() {
@@ -51,36 +54,52 @@ public class AssignmentModel {
 		this.skills = skills;
 	}
 
-	public List<StudentDTO> getAllStudents() {
-		return allStudents;
+	public ProjectDTO getProjectForEdit() {
+		return projectForEdit;
 	}
 
-	public void setAllStudents(List<StudentDTO> allStudents) {
-		this.allStudents = allStudents;
+	public void setProjectForEdit(ProjectDTO projectForEdit) {
+		this.projectForEdit = projectForEdit;
 	}
 
-	public List<ProjectDTO> getAllProjects() {
-		return allProjects;
+	public StudentDTO getStudentForEdit() {
+		return studentForEdit;
 	}
 
-	public void setAllProjects(List<ProjectDTO> allProjects) {
-		this.allProjects = allProjects;
+	public void setStudentForEdit(StudentDTO studentForEdit) {
+		this.studentForEdit = studentForEdit;
 	}
 
-	public String getSubject() {
-		return subject;
+	public List<StudentDTO> getStudents() {
+		return students;
 	}
 
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setStudents(List<StudentDTO> students) {
+		this.students = students;
 	}
 
-	public String getOperation() {
-		return operation;
+	public List<ProjectDTO> getProjects() {
+		return projects;
 	}
 
-	public void setOperation(String operation) {
-		this.operation = operation;
+	public void setProjects(List<ProjectDTO> projects) {
+		this.projects = projects;
+	}
+
+	public String getSelectedSubject() {
+		return selectedSubject;
+	}
+
+	public void setSelectedSubject(String selectedSubject) {
+		this.selectedSubject = selectedSubject;
+	}
+
+	public String getSelectedOperation() {
+		return selectedOperation;
+	}
+
+	public void setSelectedOperation(String selectedOperation) {
+		this.selectedOperation = selectedOperation;
 	}
 
 	public Boolean getStudentPanelFlag() {
@@ -115,12 +134,12 @@ public class AssignmentModel {
 		this.searchPanelFlag = searchPanelFlag;
 	}
 
-	public String getSearchValue() {
-		return searchValue;
+	public String getSearchedValue() {
+		return searchedValue;
 	}
 
-	public void setSearchValue(String searchValue) {
-		this.searchValue = searchValue;
+	public void setSearchedValue(String searchedValue) {
+		this.searchedValue = searchedValue;
 	}
 
 	public String getLocale() {

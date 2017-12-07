@@ -50,4 +50,9 @@ public class AssignmentFacadeBean implements AssignmentFacade {
 		return AssignmentTransformer.fromProjectListToDTO(repo.findAllProjects());
 	}
 
+	@Override
+	public List<StudentDTO> findStudentsByEmail(String email) {
+		return AssignmentTransformer.fromStudentListToDTO(repo.findStudentsByEmail(email));
+	}
+
 }

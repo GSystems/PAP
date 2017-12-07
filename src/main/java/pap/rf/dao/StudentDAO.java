@@ -35,4 +35,13 @@ public interface StudentDAO extends BaseDAO<StudentEntity, Long> {
 	 * @return
 	 */
 	List<StudentEntity> findAllStudents();
+
+	/**
+	 * Retrieve students by email
+	 * 
+	 * @param name
+	 * @return
+	 */
+	List<StudentEntity> findByEmail(String email);
+
 }

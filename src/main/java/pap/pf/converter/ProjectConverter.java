@@ -21,7 +21,7 @@ public class ProjectConverter implements Converter {
 				List<ProjectDTO> projects;
 				ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 				AssignmentBean bean = (AssignmentBean) elContext.getELResolver().getValue(elContext, null, "assignmentBean");
-				projects = bean.getModel().getAllProjects();
+				projects = bean.getModel().getProjects();
 				if (projects != null) {
 					for (ProjectDTO p : projects) {
 						if (p.getName().equalsIgnoreCase(value)) {

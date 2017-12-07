@@ -49,4 +49,12 @@ public interface AssignmentRepo {
 	 */
 	List<Project> findAllProjects();
 
+	/**
+	 * Retrieve students by email
+	 * 
+	 * @param name
+	 * @return
+	 */
+	List<Student> findStudentsByEmail(String email);
+
 }

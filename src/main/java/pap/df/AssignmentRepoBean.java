@@ -48,6 +48,11 @@ public class AssignmentRepoBean implements AssignmentRepo {
 		return AssignmentMapper.toProjectListFromEntity(projectDAO.findAllProjects());
 	}
 
+	@Override
+	public List<Student> findStudentsByEmail(String email) {
+		return AssignmentMapper.toStudentFromEntityList(studentDAO.findByEmail(email));
+	}
+
 	public StudentDAO getStudentDAO() {
 		return studentDAO;
 	}

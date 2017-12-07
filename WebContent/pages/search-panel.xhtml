@@ -8,18 +8,23 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<p:panel id="searchPanel" styleClass="simple-panel">
-		<p:panel rendered="#{assignmentBean.model.searchPanelFlag}" styleClass="simple-panel">
-			<p:panelGrid columns="2" styleClass="simple-panel">
-				<h:form>
-					<p:outputLabel value="Search" />
-					<p:inputText placeholder="name"
-						value="#{assignmentBean.model.searchValue}" />
+		<p:panelGrid columns="2" styleClass="simple-panel">
+			<h:form>
+				<p:outputLabel value="Search" />
+				<p:inputText placeholder="name"
+					value="#{assignmentBean.model.searchedValue}" />
+				<p:commandButton id="searchBtn" value="Submit"
+					action="#{assignmentBean.searchSubject()}" update=":subjectListbox"/>
+			</h:form>
+		</p:panelGrid>
 
-					<p:commandButton id="searchBtn" value="Submit"
-						action="#{assignmentBean.searchSubject()}" />
-				</h:form>
-			</p:panelGrid>
-		</p:panel>
+		<p:selectOneListbox id="subjectListbox" style="width: 410px;"
+			value="#{assignmentBean.model.studentForEdit}"
+			converter="StudentConverter">
+			<f:selectItems value="#{assignmentBean.model.students}" var="student"
+				itemLabel="#{student.email}" itemValue="#{student}" />
+		</p:selectOneListbox>
+
 	</p:panel>
 
 </ui:composition>

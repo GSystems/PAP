@@ -49,4 +49,12 @@ public interface AssignmentFacade {
 	 */
 	List<ProjectDTO> findAllProjects();
 
+	/**
+	 * Retrieve students by email
+	 * 
+	 * @param name
+	 * @return
+	 */
+	List<StudentDTO> findStudentsByEmail(String email);
+
 }

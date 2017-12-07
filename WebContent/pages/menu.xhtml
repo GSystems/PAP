@@ -8,10 +8,10 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:form>
-		<p:selectOneButton value="#{assignmentBean.model.subject}"
+		<p:selectOneButton value="#{assignmentBean.model.selectedSubject}"
 			id="subjectSelector" styleClass="simple-panel">
-			<f:selectItem itemLabel="Students" itemValue="student" />
-			<f:selectItem itemLabel="Projects" itemValue="project" />
+			<f:selectItem itemLabel="Students" itemValue="students" />
+			<f:selectItem itemLabel="Projects" itemValue="projects" />
 			<f:selectItem itemLabel="Assignments" itemValue="assignments" />
 			<p:ajax listener="#{assignmentBean.subjectSelector}" event="change"
 				update=":studentPanel :projectPanel :assignmentsPanel :submenuPanel" />
@@ -19,7 +19,7 @@
 	</h:form>
 
 	<p:spacer />
-	
-	<ui:include src="submenu.xhtml"/> 
+
+	<ui:include src="submenu.xhtml" />
 
 </ui:composition>

@@ -9,17 +9,17 @@
 
 	<p:panel id="submenuPanel" styleClass="simple-panel">
 		<h:form id="submenuForm">
-			<p:selectOneMenu id="operationSelector" value="#{assignmentBean.model.operation}"
-				rendered="#{assignmentBean.isSubmenuShown()}">
+			<p:selectOneMenu id="operationSelector" 
+				value="#{assignmentBean.model.selectedOperation}">
 				<f:selectItem itemLabel="Select" itemValue="" />
-				<f:selectItems value="#{assignmentBean.model.operations}" var="operation"
-					itemLabel="#{operation}" itemValue="#{operation}"/>
-				<p:ajax event="change" update="@this" />
-
+				<f:selectItems value="#{assignmentBean.model.operations}"
+					var="operation" itemLabel="#{operation}" itemValue="#{operation}" />
+				<p:ajax listener="#{assignmentBean.isSearchPanelShown}"
+					event="change" update=":searchPanel" process="@this" />
 			</p:selectOneMenu>
 		</h:form>
-		<ui:include src="search-panel.xhtml" />
-
 	</p:panel>
+
+	<ui:include src="search-panel.xhtml" />
 
 </ui:composition>
