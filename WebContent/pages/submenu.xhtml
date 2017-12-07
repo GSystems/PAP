@@ -8,18 +8,16 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<p:panel id="submenuPanel">
-		<p:panel rendered="#{assignmentBean.isSubmenuShown()}">
+		<h:form id="submenuForm">
 			<p:selectOneMenu value="#{assignmentBean.model.operation}"
-				required="true">
+				rendered="#{assignmentBean.isSubmenuShown()}">
 				<f:selectItem itemLabel="Select" itemValue="" />
 				<f:selectItem itemLabel="Add" itemValue="add" />
 				<f:selectItem itemLabel="Edit" itemValue="edit" />
-				<p:ajax listener="#{assignmentBean.isSearchPanelShown()}"
-					event="change" update=":searchPanel @this" />
+				<p:ajax listener="#{assignmentBean.isSearchPanelShown}"
+					event="change" update=":searchPanel" process="@this"/>
 			</p:selectOneMenu>
-
-		</p:panel>
-
+		</h:form>
 		<ui:include src="search-panel.xhtml" />
 
 	</p:panel>

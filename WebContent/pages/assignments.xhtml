@@ -8,7 +8,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<p:panel id="assignmentsPanel" styleClass="simple-panel">
-		<p:panel rendered="#{assignmentBean.model.assignmentsPanelFlag}"
+		<p:panel rendered="#{assignmentBean.model.assignmentsPanelFlag and operation != null}"
 			header="Assignments" styleClass="simple-panel">
 			<h:outputText value="test" />
 		</p:panel>

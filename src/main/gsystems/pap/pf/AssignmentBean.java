@@ -78,10 +78,7 @@ public class AssignmentBean implements Serializable {
 
 	public boolean isSubmenuShown() {
 		String subject = model.getSubject();
-		if (subject!= null && !"".equals(subject)) {
-			return true;
-		}
-		return false;
+		return (subject != null && !"assignments".equals(subject));
 	}
 
 	public boolean isSearchPanelShown() {
