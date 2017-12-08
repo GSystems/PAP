@@ -3,6 +3,7 @@ package main.java.pap.bfcl;
 import java.util.List;
 
 import main.java.pap.bfcl.dto.ProjectDTO;
+import main.java.pap.bfcl.dto.SkillDTO;
 import main.java.pap.bfcl.dto.StudentDTO;
 
 public interface AssignmentFacade {
@@ -56,5 +57,12 @@ public interface AssignmentFacade {
 	 * @return
 	 */
 	List<StudentDTO> findStudentsByEmail(String email);
+
+	/**
+	 * Add a new skill
+	 * 
+	 * @param skill
+	 */
+	void insertSkill(SkillDTO skill);
 
 }

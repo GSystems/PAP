@@ -6,6 +6,7 @@ public class GeneralConstants {
 	}
 	
 	public static final String SCHEMA = "PAP";
+	public static final String SCHEMA_2 = "practice";
 	
 	public static final String ADD_OPERATION = "add";
 	public static final String EDIT_OPERATION = "edit";

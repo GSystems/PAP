@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.java.pap.bfcl.dto.ProjectDTO;
+import main.java.pap.bfcl.dto.SkillDTO;
 import main.java.pap.bfcl.dto.StudentDTO;
 import main.java.pap.df.model.Project;
+import main.java.pap.df.model.Skill;
 import main.java.pap.df.model.Student;
 
 public class AssignmentTransformer {
@@ -27,8 +29,8 @@ public class AssignmentTransformer {
 		project.setCoordinator(dto.getCoordinator());
 		project.setId(dto.getId());
 		project.setName(dto.getName());
-		if(dto.getPreferences() != null) {
-			project.setPreferences(toStudentsListFromDTO(dto.getPreferences()));	
+		if (dto.getPreferences() != null) {
+			project.setPreferences(toStudentsListFromDTO(dto.getPreferences()));
 		}
 		project.setSkills(dto.getSkills());
 		return project;
@@ -48,7 +50,7 @@ public class AssignmentTransformer {
 		studentDTO.setFirstname(student.getFirstname());
 		studentDTO.setId(student.getId());
 		studentDTO.setLastname(student.getLastname());
-		if(student.getPreferences() != null) {
+		if (student.getPreferences() != null) {
 			studentDTO.setPreferences(fromProjectListToDTO(student.getPreferences()));
 		}
 		studentDTO.setSkills(student.getSkills());
@@ -61,7 +63,7 @@ public class AssignmentTransformer {
 		projectDTO.setCoordinator(project.getCoordinator());
 		projectDTO.setId(project.getId());
 		projectDTO.setName(project.getName());
-		if(project.getPreferences() != null) {
+		if (project.getPreferences() != null) {
 			projectDTO.setPreferences(fromStudentListToDTO(project.getPreferences()));
 		}
 		projectDTO.setSkills(project.getSkills());
@@ -86,10 +88,10 @@ public class AssignmentTransformer {
 		student.setSkills(dto.getSkills());
 		return student;
 	}
-	
+
 	public static List<Project> getStudentPreferences(List<ProjectDTO> projectsDTO) {
 		List<Project> projects = new ArrayList<>();
-		for(ProjectDTO projectDTO : projectsDTO) {
+		for (ProjectDTO projectDTO : projectsDTO) {
 			Project project = new Project();
 			project.setCapacity(projectDTO.getCapacity());
 			project.setCoordinator(projectDTO.getCoordinator());
@@ -98,6 +100,17 @@ public class AssignmentTransformer {
 			projects.add(project);
 		}
 		return projects;
+	}
+
+	public static SkillDTO fromSkillToDTO(Skill skill) {
+		SkillDTO skillDTO = new SkillDTO();
+		skillDTO.setId(skill.getId());
+		skillDTO.setName(skill.getName());
+		return skillDTO;
+	}
+
+	public static Skill toSkillFromDTO(SkillDTO skillDTO) {
+		return new Skill(skillDTO.getId(), skillDTO.getName());
 	}
 
 }

@@ -6,8 +6,10 @@ import javax.inject.Inject;
 
 import main.java.pap.df.mapper.AssignmentMapper;
 import main.java.pap.df.model.Project;
+import main.java.pap.df.model.Skill;
 import main.java.pap.df.model.Student;
 import main.java.pap.rf.dao.ProjectDAO;
+import main.java.pap.rf.dao.SkillDAO;
 import main.java.pap.rf.dao.StudentDAO;
 
 public class AssignmentRepoBean implements AssignmentRepo {
@@ -17,6 +19,9 @@ public class AssignmentRepoBean implements AssignmentRepo {
 
 	@Inject
 	ProjectDAO projectDAO;
+
+	@Inject
+	SkillDAO skillDAO;
 
 	@Override
 	public void insertStudent(Student student) {
@@ -51,6 +56,11 @@ public class AssignmentRepoBean implements AssignmentRepo {
 	@Override
 	public List<Student> findStudentsByEmail(String email) {
 		return AssignmentMapper.toStudentFromEntityList(studentDAO.findByEmail(email));
+	}
+
+	@Override
+	public void insertSkill(Skill skill) {
+		skillDAO.insertSkill(AssignmentMapper.fromSkillToEntity(skill));
 	}
 
 	public StudentDAO getStudentDAO() {

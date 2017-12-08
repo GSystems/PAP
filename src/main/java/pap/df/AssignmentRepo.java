@@ -3,6 +3,7 @@ package main.java.pap.df;
 import java.util.List;
 
 import main.java.pap.df.model.Project;
+import main.java.pap.df.model.Skill;
 import main.java.pap.df.model.Student;
 
 public interface AssignmentRepo {
@@ -56,5 +57,12 @@ public interface AssignmentRepo {
 	 * @return
 	 */
 	List<Student> findStudentsByEmail(String email);
+
+	/**
+	 * Add a new skill
+	 * 
+	 * @param skill
+	 */
+	void insertSkill(Skill skill);
 
 }

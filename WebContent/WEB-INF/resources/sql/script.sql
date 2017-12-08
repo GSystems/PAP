@@ -63,3 +63,9 @@ INSERT INTO student_preferences
         (2,2),
         (3,1),
         (3,3);
+
+CREATE TABLE skill (
+    id int NOT NULL AUTO_INCREMENT,
+    name varchar(20),
+    PRIMARY KEY(id)
+);

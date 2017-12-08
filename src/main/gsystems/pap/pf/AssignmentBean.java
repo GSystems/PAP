@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 
 import main.java.pap.bfcl.AssignmentFacade;
 import main.java.pap.bfcl.dto.ProjectDTO;
+import main.java.pap.bfcl.dto.SkillDTO;
 import main.java.pap.bfcl.dto.StudentDTO;
 import main.java.pap.pf.AssignmentModel;
 import main.java.pap.util.GeneralConstants;
@@ -33,10 +34,11 @@ public class AssignmentBean implements Serializable {
 		model = new AssignmentModel();
 		model.setStudent(new StudentDTO());
 		model.setProject(new ProjectDTO());
+		model.setSkillObj(new SkillDTO());
 
-//		model.setProjects(facade.findAllProjects());
-//		model.setStudents(facade.findAllStudents());
-		
+		// model.setProjects(facade.findAllProjects());
+		// model.setStudents(facade.findAllStudents());
+
 		List<String> operations = new ArrayList<>();
 		operations.add("add");
 		operations.add("edit");
@@ -95,10 +97,11 @@ public class AssignmentBean implements Serializable {
 
 	public void searchSubject() {
 		String email = model.getSearchedValue();
-		if(!"".equals(email)) {
-//			if(GeneralConstants.STUDENT_SUBJECT..equals(model.getSubject())) {
-				model.setStudents(findStudentByEmail(email));
-//			}
+		if (!"".equals(email)) {
+			// if(GeneralConstants.STUDENT_SUBJECT..equals(model.getSubject()))
+			// {
+			model.setStudents(findStudentByEmail(email));
+			// }
 		}
 	}
 
@@ -108,6 +111,10 @@ public class AssignmentBean implements Serializable {
 
 	private void showMessage(String message, FacesMessage.Severity severity) {
 		FacesContext.getCurrentInstance().addMessage(message, new FacesMessage(severity, "", ""));
+	}
+
+	public void insertSkill() {
+		facade.insertSkill(model.getSkillObj());
 	}
 
 	public AssignmentModel getModel() {

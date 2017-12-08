@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import main.java.pap.bf.transformer.AssignmentTransformer;
 import main.java.pap.bfcl.AssignmentFacade;
 import main.java.pap.bfcl.dto.ProjectDTO;
+import main.java.pap.bfcl.dto.SkillDTO;
 import main.java.pap.bfcl.dto.StudentDTO;
 import main.java.pap.df.AssignmentRepo;
 
@@ -53,6 +54,11 @@ public class AssignmentFacadeBean implements AssignmentFacade {
 	@Override
 	public List<StudentDTO> findStudentsByEmail(String email) {
 		return AssignmentTransformer.fromStudentListToDTO(repo.findStudentsByEmail(email));
+	}
+
+	@Override
+	public void insertSkill(SkillDTO skill) {
+		repo.insertSkill(AssignmentTransformer.toSkillFromDTO(skill));
 	}
 
 }

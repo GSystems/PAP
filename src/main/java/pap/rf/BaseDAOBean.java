@@ -10,12 +10,13 @@ import javax.persistence.PersistenceContext;
 
 /**
  * The base DAO bean that must be extended by all DAOs.
+ * 
  * @param <T> the specific entity type
  * @param <K> the specific entity primary key type
  */
 public abstract class BaseDAOBean<T, K extends Serializable> implements BaseDAO<T, K> {
 
-	@PersistenceContext
+	@PersistenceContext(unitName="PAP")
 	private EntityManager entityManager;
 	private Class<T> type;
 

@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.java.pap.df.model.Project;
+import main.java.pap.df.model.Skill;
 import main.java.pap.df.model.Student;
 import main.java.pap.rf.entity.ProjectEntity;
+import main.java.pap.rf.entity.SkillEntity;
 import main.java.pap.rf.entity.StudentEntity;
 
 public class AssignmentMapper {
@@ -125,6 +127,17 @@ public class AssignmentMapper {
 			students.add(student);
 		}
 		return students;
+	}
+
+	public static SkillEntity fromSkillToEntity(Skill skill) {
+		SkillEntity skillEntity = new SkillEntity();
+		skillEntity.setId(skill.getId());
+		skillEntity.setName(skill.getName());
+		return skillEntity;
+	}
+
+	public static Skill toSkillFromEntity(SkillEntity entity) {
+		return null;
 	}
 
 }

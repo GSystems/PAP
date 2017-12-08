@@ -3,6 +3,7 @@ package main.java.pap.pf;
 import java.util.List;
 
 import main.java.pap.bfcl.dto.ProjectDTO;
+import main.java.pap.bfcl.dto.SkillDTO;
 import main.java.pap.bfcl.dto.StudentDTO;
 
 public class AssignmentModel {
@@ -29,6 +30,8 @@ public class AssignmentModel {
 	private String locale = "en_us";
 
 	private List<String> operations;
+
+	private SkillDTO skillObj;
 
 	public ProjectDTO getProject() {
 		return project;
@@ -156,6 +159,14 @@ public class AssignmentModel {
 
 	public void setOperations(List<String> operations) {
 		this.operations = operations;
+	}
+
+	public SkillDTO getSkillObj() {
+		return skillObj;
+	}
+
+	public void setSkillObj(SkillDTO skillObj) {
+		this.skillObj = skillObj;
 	}
 
 }
